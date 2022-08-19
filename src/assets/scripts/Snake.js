@@ -23,58 +23,52 @@ export class Snake extends AcGameObject {
         this.eps = 1e-2;  // 允许的误差
 
         this.eye_direction = 0;
-        if (this.id === 1) this.eye_direction = 2;
+        if (this.id === 1) this.eye_direction = 2;  // 左下角的蛇初始朝上，右上角的蛇朝下
 
-        this.eye_dx = [
+        this.eye_dx = [  // 蛇眼睛不同方向的x的偏移量
             [-1, 1],
             [1, 1],
             [1, -1],
             [-1, -1],
         ];
-        this.eye_dy = [
+        this.eye_dy = [  // 蛇眼睛不同方向的y的偏移量
             [-1, -1],
             [-1, 1],
             [1, 1],
             [1, -1],
-        ];
-        
+        ]
     }
 
-
     start() {
-        
+
     }
 
     set_direction(d) {
         this.direction = d;
     }
 
-    check_tail_increasing() {
+    check_tail_increasing() {  // 检测当前回合，蛇的长度是否增加
         if (this.step <= 10) return true;
         if (this.step % 3 === 1) return true;
-
         return false;
     }
 
-    next_step() { //蛇的状态变为走下一步
+    next_step() {  // 将蛇的状态变为走下一步
         const d = this.direction;
         this.next_cell = new Cell(this.cells[0].r + this.dr[d], this.cells[0].c + this.dc[d]);
         this.eye_direction = d;
-        this.direction = -1;
+        this.direction = -1;  // 清空操作
         this.status = "move";
-        this.step ++ ;   
+        this.step ++ ;
 
-        // 求长度
         const k = this.cells.length;
-        for (let i = k; i > 0; i -- ) { // 初始元素不变 每一个元素往后移动一位
+        for (let i = k; i > 0; i -- ) {
             this.cells[i] = JSON.parse(JSON.stringify(this.cells[i - 1]));
         }
 
-        if (!this.gamemap.check_valid(this.next_cell)) {
+        if (!this.gamemap.check_valid(this.next_cell)) {  // 下一步操作撞了，蛇瞬间去世
             this.status = "die";
         }
-
-
     }
 
     update_move() {
@@ -86,13 +80,12 @@ export class Snake extends AcGameObject {
             this.cells[0] = this.next_cell;  // 添加一个新蛇头
             this.next_cell = null;
             this.status = "idle";  // 走完了，停下来
-            
-            if (!this.check_tail_increasing()) { // 蛇不变长。
+
+            if (!this.check_tail_increasing()) {  // 蛇不变长
                 this.cells.pop();
             }
-
         } else {
-            const move_distance = this.speed * this.timedelta / 1000;
+            const move_distance = this.speed * this.timedelta / 1000;  // 每两帧之间走的距离
             this.cells[0].x += move_distance * dx / distance;
             this.cells[0].y += move_distance * dy / distance;
 
@@ -115,18 +108,14 @@ export class Snake extends AcGameObject {
         this.render();
     }
 
-
     render() {
         const L = this.gamemap.L;
         const ctx = this.gamemap.ctx;
 
         ctx.fillStyle = this.color;
-        
-        // 判断蛇死亡
         if (this.status === "die") {
             ctx.fillStyle = "white";
         }
-
 
         for (const cell of this.cells) {
             ctx.beginPath();
@@ -154,7 +143,5 @@ export class Snake extends AcGameObject {
             ctx.arc(eye_x, eye_y, L * 0.05, 0, Math.PI * 2);
             ctx.fill();
         }
-
-
     }
 }

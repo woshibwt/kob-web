@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PkIndexView from '../views/pk/PkIndexView'
-import RanklistIndexView from '../views/ranklist/RanklistIndexView'
 import RecordIndexView from '../views/record/RecordIndexView'
+import RanklistIndexView from '../views/ranklist/RanklistIndexView'
 import UserBotIndexView from '../views/user/bot/UserBotIndexView'
 import NotFound from '../views/error/NotFound'
-import UserAccountLoginView from '@/views/user/account/UserAccountLoginView'
-import UserAccountRegisterView from '@/views/user/account/UserAccountRegisterView'
-
+import UserAccountLoginView from '../views/user/account/UserAccountLoginView'
+import UserAccountRegisterView from '../views/user/account/UserAccountRegisterView'
 
 const routes = [
   {
@@ -36,12 +35,12 @@ const routes = [
   },
   {
     path: "/user/account/login/",
-    name: "user_acount_login",
+    name: "user_account_login",
     component: UserAccountLoginView,
   },
   {
     path: "/user/account/register/",
-    name: "user_acount_register",
+    name: "user_account_register",
     component: UserAccountRegisterView,
   },
   {
@@ -51,7 +50,7 @@ const routes = [
   },
   {
     path: "/:catchAll(.*)",
-    redirect: "/404/",
+    redirect: "/404/"
   }
 ]
 

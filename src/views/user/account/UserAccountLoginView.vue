@@ -40,9 +40,7 @@ export default {
             store.dispatch("login", {
                 username: username.value,
                 password: password.value,
-
                 success() {
-                    //登陆成功后获取用户信息
                     store.dispatch("getinfo", {
                         success() {
                             router.push({ name: 'home' });
