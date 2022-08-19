@@ -10,11 +10,66 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap"
 
 
+
+
 export default {
   components:{
     NavBar
-  }
+  },
+  setup() {
+    // $.ajax({
+    //   url: "http://127.0.0.1:3000/user/account/token/",
+    //   type: "post",
+    //   data: {
+    //     username: 'bwt',
+    //     password: 'abcd',
+    //   },
+    //   success(resp) {
+    //     console.log(resp);
+    //   },
+    //   error(resp) {
+    //     console.log(resp);
+    //   }
+    // });
+
+    // $.ajax({
+    //   url: "http://127.0.0.1:3000/user/account/info/",
+    //   type: "get",
+    //   headers: {
+    //     Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNGRlZjg5MDcyYTY0YzExYmM1MDljN2RkZTk3Mjg0OCIsInN1YiI6IjEiLCJpc3MiOiJzZyIsImlhdCI6MTY2MDg5OTA2MywiZXhwIjoxNjYyMTA4NjYzfQ.VXIOfEMxBKOKiIPhhvxNvLsBzSZjoncZOTzrk5FWNlE",
+    //   },
+    //   success(resp) {
+    //     console.log(resp);
+    //   },
+    //   error(resp) {
+    //     console.log(resp);
+    //   }
+    // });
+
+    // $.ajax({
+    //   url: "http://127.0.0.1:3000/user/account/register/",
+    //   type: "post",
+    //   data: {
+    //     username: "zcy",
+    //     password: "abc",
+    //     confirmedPassword: "abc",
+    //   },
+    //   success(resp) {
+    //     console.log(resp);
+    //   },
+    //   error(resp) {
+    //     console.log(resp);
+    //   }
+    // })
+
+
+
+
+
+
 }
+}
+
 </script>
 
 

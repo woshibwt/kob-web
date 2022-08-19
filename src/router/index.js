@@ -4,6 +4,8 @@ import RanklistIndexView from '../views/ranklist/RanklistIndexView'
 import RecordIndexView from '../views/record/RecordIndexView'
 import UserBotIndexView from '../views/user/bot/UserBotIndexView'
 import NotFound from '../views/error/NotFound'
+import UserAccountLoginView from '@/views/user/account/UserAccountLoginView'
+import UserAccountRegisterView from '@/views/user/account/UserAccountRegisterView'
 
 
 const routes = [
@@ -31,6 +33,16 @@ const routes = [
     path: "/user/bot/",
     name: "user_bot_index",
     component: UserBotIndexView,
+  },
+  {
+    path: "/user/account/login/",
+    name: "user_acount_login",
+    component: UserAccountLoginView,
+  },
+  {
+    path: "/user/account/register/",
+    name: "user_acount_register",
+    component: UserAccountRegisterView,
   },
   {
     path: "/404/",
